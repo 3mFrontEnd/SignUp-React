@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { notify } from './toast';
 import styles from "./SignUp.module.css"
+import {Link} from "react-router-dom";
 
 
 
@@ -20,7 +21,7 @@ const SignUp = () => {
     const [touched, setTouched] = useState({});
 
     useEffect (()=>{
-        setErrors(validate(data))
+        setErrors(validate(data, "signup"))
     },[data, touched]);
 
     const changeHandler = event =>{
@@ -121,7 +122,7 @@ const SignUp = () => {
                     {errors.isAccepted && touched.isAccepted && <span>{errors.isAccepted}</span>}
                 </div>
                 <div className={styles.formButton}>
-                    <a href='#'>Login</a>
+                    <Link to="/login">Login</Link>
                     <button type="submit">Sign Up</button>
                 </div>
             </form>
